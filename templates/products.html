@@ -1,0 +1,29 @@
+<!-- templates/products.html -->
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Quản Lý Sản Phẩm</h2>
+    <table class="product-table">
+        <thead>
+            <tr>
+                <th>ID Sản Phẩm</th>
+                <th>Tên</th>
+                <th>Tồn Kho</th>
+                <th>Giá</th>
+                <th>Hành Động</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td>{{ product.id }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.stock }}</td>
+                <td>{{ product.price }}</td>
+                <td>
+                    <a href="/edit/{{ product.id }}">Chỉnh Sửa</a> |
+                    <a href="/delete/{{ product.id }}" onclick="return confirm('Bạn có chắc chắn không?');">Xóa</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
